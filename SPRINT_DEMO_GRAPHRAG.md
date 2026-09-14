@@ -1,6 +1,6 @@
 # NHÓM 7
 > **Đề tài:** Nghiên cứu và so sánh các kỹ thuật RAG nâng cao (GraphRAG) cho hệ thống hỏi–đáp tài liệu học thuật tiếng Việt 
-> **Thời gian:** 4 ngày (Tuần 3–4) 
+
 > **Mục tiêu cuối:** Demo chạy được 3 pipeline, so sánh kết quả trên cùng bộ câu hỏi
 
 ---
