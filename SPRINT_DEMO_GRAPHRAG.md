@@ -3,7 +3,6 @@
 
 > **Mục tiêu cuối:** Demo chạy được 3 pipeline, so sánh kết quả trên cùng bộ câu hỏi
 
----
 
 ## 1. TỔNG QUAN HỆ THỐNG
 
