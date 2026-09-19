@@ -1,0 +1,11 @@
+Tìm kiếm vector với FAISS và kỹ thuật Re-ranking
+
+FAISS là viết tắt của Facebook AI Similarity Search, một thư viện tìm kiếm vector do Meta phát triển. Khi kho tài liệu có hàng trăm nghìn chunk, việc so sánh câu hỏi với từng vector một là quá chậm, độ phức tạp O(n). FAISS tăng tốc bằng các cấu trúc chỉ mục thông minh. Với chỉ mục IndexFlat, FAISS tính tích vô hướng trên toàn bộ vector nhưng được tối ưu bằng lệnh song song ở cấp CPU. Với chỉ mục HNSW (Hierarchical Navigable Small World), FAISS dựng một đồ thị các vector và tìm kiếm bằng cách nhảy qua các nút lân cận, đạt độ phức tạp gần đúng khoảng O(log n) thay vì O(n) của tìm kiếm vét cạn (brute-force).
+
+Vì các vector embedding đã được chuẩn hóa về độ dài bằng 1, tích vô hướng giữa hai vector chính bằng cosine similarity của chúng. Do đó chỉ mục IndexFlatIP (Inner Product) của FAISS cho ra thứ tự xếp hạng giống hệt cosine mà không cần bước chia cho độ dài, nên chạy nhanh hơn.
+
+Re-ranking là kỹ thuật cải tiến chất lượng truy hồi của Naive RAG. Vấn đề của truy hồi bằng embedding là nó dùng bi-encoder: câu hỏi và đoạn văn được mã hóa riêng biệt thành hai vector rồi mới so sánh, nên mô hình không thấy được sự tương tác chi tiết giữa từng từ trong câu hỏi với từng từ trong đoạn văn. Bi-encoder nhanh vì có thể nhúng trước toàn bộ tài liệu, nhưng độ chính xác có giới hạn.
+
+Cross-encoder giải quyết điểm yếu đó. Cross-encoder nhận cả cặp câu hỏi và đoạn văn cùng một lúc, đưa qua mô hình Transformer, và xuất ra một điểm số đo mức độ liên quan. Vì xử lý cả cặp nên cross-encoder hiểu ngữ cảnh sâu hơn và chấm điểm chính xác hơn bi-encoder, nhưng đổi lại chậm hơn nhiều vì phải chạy một lần suy luận cho mỗi cặp.
+
+Do đó, pipeline RAG có re-ranking dùng chiến lược hai giai đoạn gọi là retrieve-and-rerank. Giai đoạn một, bi-encoder truy hồi nhanh top-50 đoạn ứng viên từ FAISS. Giai đoạn hai, cross-encoder chấm điểm lại 50 ứng viên đó và chọn ra top-5 đoạn liên quan nhất để đưa cho LLM. Cách này cân bằng giữa tốc độ và độ chính xác. Với tiếng Việt, nên dùng cross-encoder đa ngữ như bge-reranker-v2-m3 thay vì mô hình chỉ huấn luyện cho tiếng Anh.

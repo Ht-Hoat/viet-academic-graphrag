@@ -1,0 +1,20 @@
+# Bí mật
+.env
+
+# Dữ liệu sinh ra (giữ .gitkeep để còn cấu trúc thư mục)
+data/pdfs/*
+!data/pdfs/.gitkeep
+data/faiss/*
+!data/faiss/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+results/*
+!results/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/

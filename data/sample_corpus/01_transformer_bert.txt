@@ -1,0 +1,11 @@
+Kiến trúc Transformer và mô hình BERT
+
+Kiến trúc Transformer được đề xuất bởi Vaswani và cộng sự vào năm 2017 trong bài báo "Attention is All You Need" tại Google. Transformer loại bỏ hoàn toàn cơ chế hồi quy (recurrent) của mạng LSTM, thay vào đó dùng cơ chế tự chú ý (self-attention) để xử lý toàn bộ chuỗi cùng một lúc. Nhờ vậy Transformer huấn luyện song song hiệu quả hơn LSTM và nắm bắt quan hệ xa giữa các từ tốt hơn. Trong khi LSTM xử lý thông tin tuần tự từng bước theo thời gian, Transformer xử lý song song mọi vị trí thông qua ma trận chú ý.
+
+BERT (Bidirectional Encoder Representations from Transformers) được đề xuất bởi Devlin và cộng sự vào năm 2018, cũng thuộc Google AI Language. BERT chỉ sử dụng phần bộ mã hóa (encoder) của Transformer. Điểm mới của BERT là đọc câu theo hai chiều (bidirectional) thay vì chỉ trái sang phải.
+
+BERT được huấn luyện bằng phương pháp pre-training với hai tác vụ chính. Tác vụ thứ nhất là Masked Language Model (MLM): che ngẫu nhiên khoảng 15% số từ trong câu và bắt mô hình đoán lại từ bị che dựa vào ngữ cảnh hai bên. Tác vụ thứ hai là Next Sentence Prediction (NSP): cho hai câu và bắt mô hình dự đoán câu thứ hai có phải là câu tiếp theo của câu thứ nhất hay không. Sau khi pre-training trên kho văn bản lớn, BERT được tinh chỉnh (fine-tuning) cho từng tác vụ cụ thể như phân loại văn bản hay hỏi đáp.
+
+GPT (Generative Pre-trained Transformer) được đề xuất bởi Radford và cộng sự vào năm 2018, thuộc OpenAI. Khác với BERT dùng encoder và đọc hai chiều, GPT sử dụng phần bộ giải mã (decoder) của Transformer và đọc một chiều từ trái sang phải, phù hợp cho việc sinh văn bản. Cả BERT và GPT đều dựa trên kiến trúc Transformer và đều sử dụng phương pháp pre-training trên dữ liệu lớn, đây là điểm chung quan trọng của hai mô hình.
+
+Các mô hình ngôn ngữ lớn (LLM) hiện nay như Llama của Meta, Qwen của Alibaba, hay GPT-4 của OpenAI đều kế thừa kiến trúc Transformer. Chúng đạt năng lực sinh ngôn ngữ ấn tượng nhưng vẫn gặp hai hạn chế cố hữu: hiện tượng bịa thông tin (hallucination) và tri thức bị đóng băng tại thời điểm huấn luyện.

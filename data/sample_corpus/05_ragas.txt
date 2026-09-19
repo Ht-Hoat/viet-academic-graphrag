@@ -1,0 +1,13 @@
+Đánh giá hệ thống RAG bằng RAGAS
+
+RAGAS là viết tắt của Retrieval-Augmented Generation Assessment, một khung đánh giá tự động chất lượng của các hệ thống RAG. Thay vì phải chấm thủ công từng câu trả lời, RAGAS dùng chính mô hình ngôn ngữ làm giám khảo để chấm điểm trên nhiều chiều, cho phép so sánh khách quan giữa các phương pháp như Naive RAG, RAG có re-ranking và GraphRAG.
+
+RAGAS đánh giá bốn chỉ số chính. Chỉ số thứ nhất là Faithfulness (độ trung thực), đo xem câu trả lời có bám sát ngữ cảnh được cung cấp hay không. Mô hình tách câu trả lời thành các mệnh đề nhỏ rồi kiểm tra từng mệnh đề có được ngữ cảnh hỗ trợ không; nếu hệ thống bịa thêm thông tin ngoài ngữ cảnh thì điểm này thấp.
+
+Chỉ số thứ hai là Answer Relevancy (độ liên quan của câu trả lời), đo xem câu trả lời có thực sự trả lời đúng câu hỏi hay không. Mô hình sinh ra các câu hỏi ngược từ câu trả lời rồi so sánh với câu hỏi gốc; nếu trả lời lạc đề thì điểm thấp.
+
+Chỉ số thứ ba là Context Precision (độ chính xác của ngữ cảnh), đo xem trong các đoạn được truy hồi, bao nhiêu phần thực sự liên quan và được xếp ở vị trí cao. Nếu những đoạn không liên quan bị xếp lên trước những đoạn đúng thì điểm này giảm. Đây là chỉ số phản ánh rõ nhất lợi ích của bước re-ranking.
+
+Chỉ số thứ tư là Context Recall (độ bao phủ của ngữ cảnh), đo xem ngữ cảnh truy hồi được có chứa đủ thông tin cần thiết để trả lời hay không, bằng cách đối chiếu với câu trả lời chuẩn (ground truth) do con người soạn sẵn. Nếu bỏ sót thông tin quan trọng thì điểm thấp; đây là chỗ GraphRAG thường vượt trội với câu hỏi đa bước vì đồ thị giúp thu thập đủ các mảnh thông tin phân tán.
+
+Giả thuyết nghiên cứu của đề tài là: với câu hỏi đơn (single-hop), ba phương pháp cho kết quả tương đương; với câu hỏi đa bước (multi-hop) và câu hỏi tổng quát (global), GraphRAG vượt trội về Faithfulness và Context Recall, đổi lại độ trễ (latency) cao hơn. Các xu hướng nghiên cứu chính hiện nay trong lĩnh vực RAG gồm GraphRAG, Agentic RAG, truy hồi lai kết hợp BM25 với vector, và các khung đánh giá tự động như RAGAS.

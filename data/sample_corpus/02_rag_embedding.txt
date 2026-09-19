@@ -1,0 +1,11 @@
+RAG và kỹ thuật nhúng vector
+
+RAG là viết tắt của Retrieval-Augmented Generation (Sinh có tăng cường truy hồi). RAG hoạt động bằng cách truy hồi các tài liệu liên quan để làm ngữ cảnh trước khi mô hình ngôn ngữ sinh câu trả lời. Nhờ vậy mô hình trả lời dựa trên nguồn dữ liệu riêng và có thể trích dẫn nguồn, giúp khắc phục hai hạn chế của LLM là bịa thông tin và tri thức đóng băng. Kỹ thuật RAG được đề xuất bởi Lewis và cộng sự vào năm 2020 tại Facebook AI Research.
+
+Trái tim của RAG là bước truy hồi dựa trên embedding. Embedding là biểu diễn văn bản dưới dạng một vector số trong không gian nhiều chiều, thường là 768 hoặc 1024 chiều. Hai đoạn văn có nghĩa giống nhau sẽ có vector gần nhau trong không gian này. Mô hình embedding đọc một đoạn văn và xuất ra một vector đại diện cho ngữ nghĩa của đoạn đó. Embedding được dùng cho RAG vì nó cho phép tìm kiếm theo ngữ nghĩa (semantic similarity) giữa câu hỏi và tài liệu, thay vì chỉ so khớp từ khóa.
+
+Để đo độ giống nhau giữa hai vector, người ta dùng cosine similarity. Cosine similarity được tính bằng tích vô hướng của hai vector chia cho tích độ dài của chúng, theo công thức sim(a, b) = (a · b) / (|a| × |b|). Giá trị nằm trong khoảng từ -1 đến 1; càng gần 1 thì hai đoạn văn càng giống nhau về ngữ nghĩa.
+
+Đối với tiếng Việt, các mô hình embedding đa ngữ như multilingual-e5 và bge-m3 đã đủ tốt để triển khai RAG. Mô hình bge-m3 do Viện BAAI phát triển, hỗ trợ hơn 100 ngôn ngữ trong đó có tiếng Việt, và có thể xử lý văn bản dài. Các LLM mã nguồn mở như Qwen, Llama, SeaLLM cũng đủ mạnh cho khâu sinh câu trả lời tiếng Việt.
+
+Pipeline Naive RAG gồm năm bước. Bước một là chunking: chia tài liệu thành các đoạn nhỏ khoảng 256 đến 512 token. Bước hai là embedding: nhúng mỗi chunk thành vector. Bước ba là indexing: lưu các vector vào một chỉ mục tìm kiếm. Bước bốn là retrieval: nhúng câu hỏi rồi tìm các chunk gần nhất. Bước năm là generation: ghép các chunk tìm được vào prompt và đưa cho LLM sinh câu trả lời. Naive RAG tốt với câu hỏi đơn nhưng gặp khó với câu hỏi đa bước.
