@@ -1,0 +1,23 @@
+# Lõi bắt buộc
+sentence-transformers>=4.0.0      # CrossEncoder + CrossEncoderTrainer (khuyến nghị >=5.0)
+transformers>=4.40.0
+torch>=2.0.0
+numpy>=1.24.0
+
+# FAISS — chọn 1 trong 2:
+faiss-cpu>=1.7.4                   # bản CPU (mặc định)
+# faiss-gpu>=1.7.4                 # nếu có GPU CUDA, cài bản này thay cho faiss-cpu
+
+# Dùng cho huấn luyện (fine-tune)
+datasets>=2.14.0
+accelerate>=0.26.0
+
+# Tuỳ chọn: backend FlagEmbedding cho bge-reranker (compute_score có normalize)
+# FlagEmbedding>=1.2.0
+
+# Tuỳ chọn: theo dõi huấn luyện
+# tensorboard>=2.14.0
+# wandb>=0.16.0
+
+# Tuỳ chọn: test
+# pytest>=7.4.0
