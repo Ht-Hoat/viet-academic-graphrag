@@ -1,0 +1,52 @@
+[
+  {
+    "question": "RAG là viết tắt của gì và hoạt động như thế nào?",
+    "ground_truth": "RAG là viết tắt của Retrieval-Augmented Generation. Nó truy hồi các tài liệu liên quan làm ngữ cảnh trước khi mô hình ngôn ngữ sinh câu trả lời, giúp trả lời dựa trên nguồn dữ liệu riêng và trích dẫn nguồn.",
+    "type": "single-hop"
+  },
+  {
+    "question": "BERT được huấn luyện bằng phương pháp gì?",
+    "ground_truth": "BERT được huấn luyện bằng pre-training với hai tác vụ: Masked Language Model (MLM) và Next Sentence Prediction (NSP).",
+    "type": "single-hop"
+  },
+  {
+    "question": "Embedding là gì và tại sao dùng cho RAG?",
+    "ground_truth": "Embedding là biểu diễn văn bản dưới dạng vector số trong không gian nhiều chiều; hai đoạn nghĩa giống nhau có vector gần nhau. Dùng cho RAG vì cho phép tìm kiếm theo ngữ nghĩa giữa câu hỏi và tài liệu.",
+    "type": "single-hop"
+  },
+  {
+    "question": "Cosine similarity được tính như thế nào?",
+    "ground_truth": "Cosine similarity bằng tích vô hướng của hai vector chia cho tích độ dài của chúng: sim(a,b) = (a·b)/(|a|×|b|), giá trị từ -1 đến 1.",
+    "type": "single-hop"
+  },
+  {
+    "question": "FAISS là gì và tại sao nhanh hơn tìm kiếm vét cạn?",
+    "ground_truth": "FAISS là thư viện tìm kiếm vector của Meta. Với chỉ mục HNSW, nó tìm kiếm gần đúng với độ phức tạp khoảng O(log n) thay vì O(n) của brute-force.",
+    "type": "single-hop"
+  },
+  {
+    "question": "Tác giả nào đề xuất BERT và họ thuộc tổ chức nào?",
+    "ground_truth": "BERT được đề xuất bởi Devlin và cộng sự năm 2018, thuộc Google AI Language.",
+    "type": "multi-hop"
+  },
+  {
+    "question": "So sánh bi-encoder và cross-encoder về tốc độ và độ chính xác?",
+    "ground_truth": "Bi-encoder mã hóa riêng biệt nên nhanh, dùng cho truy hồi ban đầu; cross-encoder mã hóa cặp câu hỏi-đoạn văn cùng lúc nên chính xác hơn nhưng chậm, dùng để re-rank.",
+    "type": "multi-hop"
+  },
+  {
+    "question": "Điểm chung giữa BERT và GPT là gì?",
+    "ground_truth": "Cả BERT và GPT đều dựa trên kiến trúc Transformer và đều sử dụng phương pháp pre-training trên dữ liệu lớn.",
+    "type": "multi-hop"
+  },
+  {
+    "question": "Vì sao GraphRAG trả lời câu hỏi đa bước tốt hơn Naive RAG?",
+    "ground_truth": "Naive RAG chỉ tìm chunk theo độ tương đồng ngữ nghĩa nên dễ bỏ sót thông tin phân tán; GraphRAG đi theo quan hệ giữa các thực thể trong đồ thị để thu thập thông tin ở nhiều tài liệu.",
+    "type": "multi-hop"
+  },
+  {
+    "question": "Xu hướng nghiên cứu chính trong lĩnh vực RAG hiện nay là gì?",
+    "ground_truth": "Các xu hướng chính gồm GraphRAG, Agentic RAG, truy hồi lai (BM25 + vector), và các phương pháp đánh giá tự động như RAGAS.",
+    "type": "global"
+  }
+]

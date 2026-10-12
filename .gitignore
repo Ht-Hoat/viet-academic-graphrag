@@ -1,0 +1,14 @@
+# Bí mật
+.env
+
+# Kết quả thật sinh ra khi chạy (giữ results/sample/ để UI có gì hiển thị sẵn)
+results/*.json
+results/*.png
+!results/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/

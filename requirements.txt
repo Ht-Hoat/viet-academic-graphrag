@@ -1,0 +1,21 @@
+# === Demo UI ===
+streamlit>=1.37.0
+plotly>=5.22.0            # biểu đồ tương tác trong UI
+
+# === Đánh giá ===
+ragas>=0.2.0
+datasets>=2.20.0
+pandas>=2.2.0
+matplotlib>=3.9.0        # biểu đồ PNG lưu ra cho báo cáo
+numpy>=1.26.0
+
+# === Utilities ===
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+
+# === Test ===
+pytest>=8.0.0
+
+# Ghi chú: module này TÍCH HỢP 3 pipeline của nhóm. Khi merge vào repo chung, các package
+# của Naive RAG / Re-ranking / GraphRAG (langchain, faiss-cpu, sentence-transformers, neo4j,
+# igraph, leidenalg, pymupdf...) cũng cần có mặt. Xem requirements của từng module đó.

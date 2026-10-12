@@ -1,0 +1,19 @@
+{
+  "method": "Naive RAG",
+  "num_questions": 10,
+  "source": "sample",
+  "overall": {
+    "faithfulness": 0.72,
+    "answer_relevancy": 0.78,
+    "context_precision": 0.70,
+    "context_recall": 0.66,
+    "latency": 0.8,
+    "n": 10
+  },
+  "by_type": {
+    "single-hop": {"faithfulness": 0.85, "answer_relevancy": 0.86, "context_precision": 0.82, "context_recall": 0.83, "latency": 0.7, "n": 5},
+    "multi-hop": {"faithfulness": 0.58, "answer_relevancy": 0.70, "context_precision": 0.58, "context_recall": 0.48, "latency": 0.9, "n": 4},
+    "global": {"faithfulness": 0.50, "answer_relevancy": 0.62, "context_precision": 0.55, "context_recall": 0.45, "latency": 0.9, "n": 1}
+  },
+  "records": []
+}
