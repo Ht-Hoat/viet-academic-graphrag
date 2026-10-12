@@ -240,13 +240,35 @@ Trong đó: A = ma trận kề, k_i = bậc đỉnh i, m = số cạnh, δ = 1 n
 **Điểm mạnh của RAGAS:** không cần nhãn vàng (gold labels) → LLM tự đánh giá → phù hợp nghiên cứu học thuật
 
 
-**Q1: "Sao không dùng database quan hệ thay vì graph database?"**  
+**Q1: "Sao không dùng database quan hệ thay vì graph database?"**
+
+Được, nhưng câu hỏi đa bước sẽ đắt. Trong SQL, đi từ BERT → tác giả → tổ chức là hai phép JOIN; mỗi bước nhảy
+thêm là thêm một JOIN, và số bước lại phụ thuộc câu hỏi nên phải viết JOIN đệ quy hoặc sinh SQL động. Neo4j lưu
+sẵn con trỏ từ node sang các cạnh của nó (index-free adjacency), nên chi phí đi một bước chỉ phụ thuộc số láng
+giềng của node đó, không phụ thuộc kích thước bảng. Cypher cũng viết thẳng được mẫu cần tìm:
+`MATCH p = allShortestPaths((a)-[:REL*..4]-(b))`. Với quy mô đồ thị của nhóm thì cả hai đều chạy được; chọn graph
+database vì code truy vấn ngắn và đọc ra đúng ý đồ thuật toán.
 
 
-**Q2: "Chi phí tính toán có quá cao không?"**  
+
+**Q2: "Chi phí tính toán có quá cao không?"**
+
+Tách làm hai phần. Phần dựng đồ thị chạy một lần: mỗi đơn vị văn bản (~1500 ký tự) tốn 1 lượt gọi LLM, 50 PDF
+khoảng 1000 lượt; kết quả được cache ra `data/graph/extractions.jsonl` nên chạy lại không tốn thêm. Phần trả lời
+mỗi câu hỏi tốn 2 lượt gọi LLM cho local search (1 phân tích câu hỏi + 1 sinh câu trả lời), so với 1 lượt của
+Naive RAG; riêng global search tốn thêm mỗi cụm 1 lượt ở bước map nên nhóm chạy song song và chỉ lấy 5 cụm liên
+quan nhất. Truy vấn trên đồ thị (mili-giây) không đáng kể so với thời gian gọi LLM. Nói cách khác, GraphRAG đắt ở
+khâu chuẩn bị dữ liệu, không đắt ở khâu phục vụ — và đó chính là đánh đổi mà đề tài đo bằng cột latency.
 
 
-**Q3: "Tại sao chọn tiếng Việt?"**  
+
+**Q3: "Tại sao chọn tiếng Việt?"**
+
+Vì đây là khoảng trống thật: các so sánh định lượng giữa naive RAG, RAG + re-ranking và GraphRAG hầu hết làm trên
+tài liệu tiếng Anh, chưa có số liệu trên tài liệu học thuật tiếng Việt. Tiếng Việt cũng có mấy khó khăn riêng đáng
+để khảo sát: dấu và chuẩn Unicode không đồng nhất giữa các PDF, thuật ngữ lẫn lộn Việt - Anh (`tiền huấn luyện`
+và `pre-training` là một khái niệm), tên riêng viết theo nhiều cách khác nhau. Những chỗ này ảnh hưởng trực tiếp
+tới chất lượng đồ thị, nên kết quả của nhóm nói được điều mà thí nghiệm trên tiếng Anh không nói.
 
 
 

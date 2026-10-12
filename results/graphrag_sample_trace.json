@@ -1,0 +1,827 @@
+{
+  "summary": [
+    {
+      "type": "global",
+      "n": 1,
+      "errors": 0,
+      "empty_context": 0,
+      "global_search": 1,
+      "avg_latency": 0.0,
+      "avg_evidence_hit": 1.0
+    },
+    {
+      "type": "multi-hop",
+      "n": 3,
+      "errors": 0,
+      "empty_context": 0,
+      "global_search": 0,
+      "avg_latency": 0.07,
+      "avg_evidence_hit": 1.0
+    },
+    {
+      "type": "single-hop",
+      "n": 1,
+      "errors": 0,
+      "empty_context": 0,
+      "global_search": 0,
+      "avg_latency": 0.02,
+      "avg_evidence_hit": 1.0
+    }
+  ],
+  "rows": [
+    {
+      "question": "Tác giả của BERT làm việc ở tổ chức nào?",
+      "type": "multi-hop",
+      "ground_truth": "Nhóm tác giả Devlin et al. 2018 của BERT làm việc tại Google AI Language.",
+      "answer": "",
+      "sources": [
+        "bert.pdf — trang 1",
+        "bert.pdf — trang 2",
+        "gpt.pdf — trang 1",
+        "transformer.pdf — trang 1",
+        "Đồ thị tri thức: 9 đường quan hệ"
+      ],
+      "contexts": [
+        "Quan hệ trong đồ thị tri thức: Devlin et al. 2018 --(đề xuất)--> BERT; Devlin et al. 2018 --(thuộc về)--> Google AI Language",
+        "Quan hệ trong đồ thị tri thức: Devlin et al. 2018 --(đề xuất)--> BERT",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> tiền huấn luyện",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Masked Language Model",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; GPT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> tiền huấn luyện; GPT --(sử dụng)--> tiền huấn luyện",
+        "BERT là mô hình ngôn ngữ được đề xuất trong bài báo Devlin et al. 2018. BERT sử dụng kiến trúc Transformer và phương pháp tiền huấn luyện với tác vụ Masked Language Model.",
+        "Nhóm tác giả của bài báo Devlin et al. 2018 làm việc tại Google AI Language.",
+        "GPT được giới thiệu trong bài báo Radford et al. 2018. GPT cũng dựa trên kiến trúc Transformer và tiền huấn luyện trên kho văn bản lớn.",
+        "Transformer được đề xuất bởi Vaswani et al. 2017, dựa trên cơ chế self-attention."
+      ],
+      "search_type": "Local",
+      "seed_entities": [
+        "BERT"
+      ],
+      "graph_paths": [
+        "Devlin et al. 2018 --(đề xuất)--> BERT; Devlin et al. 2018 --(thuộc về)--> Google AI Language",
+        "Devlin et al. 2018 --(đề xuất)--> BERT",
+        "BERT --(sử dụng)--> Transformer",
+        "BERT --(sử dụng)--> tiền huấn luyện",
+        "BERT --(sử dụng)--> Masked Language Model",
+        "BERT --(sử dụng)--> Transformer; GPT --(sử dụng)--> Transformer",
+        "BERT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "BERT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention",
+        "BERT --(sử dụng)--> tiền huấn luyện; GPT --(sử dụng)--> tiền huấn luyện"
+      ],
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "bert",
+            "label": "BERT",
+            "type": "METHOD",
+            "seed": true
+          },
+          {
+            "id": "devlin et al. 2018",
+            "label": "Devlin et al. 2018",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "google ai language",
+            "label": "Google AI Language",
+            "type": "ORG",
+            "seed": false
+          },
+          {
+            "id": "transformer",
+            "label": "Transformer",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "tiền huấn luyện",
+            "label": "tiền huấn luyện",
+            "type": "CONCEPT",
+            "seed": false
+          },
+          {
+            "id": "masked language model",
+            "label": "Masked Language Model",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "gpt",
+            "label": "GPT",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "vaswani et al. 2017",
+            "label": "Vaswani et al. 2017",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "self-attention",
+            "label": "self-attention",
+            "type": "CONCEPT",
+            "seed": false
+          }
+        ],
+        "edges": [
+          {
+            "source": "devlin et al. 2018",
+            "target": "bert",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "devlin et al. 2018",
+            "target": "google ai language",
+            "label": "thuộc_về"
+          },
+          {
+            "source": "bert",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "bert",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "bert",
+            "target": "masked language model",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "gpt",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "vaswani et al. 2017",
+            "target": "transformer",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "transformer",
+            "target": "self-attention",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "gpt",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          }
+        ]
+      },
+      "method": "GraphRAG",
+      "latency": 0.15,
+      "timings": {
+        "analyze": 0.0,
+        "graph": 0.148,
+        "vector": 0.0
+      },
+      "evidence_hit": 1.0
+    },
+    {
+      "question": "BERT và GPT có điểm gì chung?",
+      "type": "multi-hop",
+      "ground_truth": "Cả BERT và GPT đều dựa trên kiến trúc Transformer và đều dùng tiền huấn luyện.",
+      "answer": "",
+      "sources": [
+        "bert.pdf — trang 1",
+        "gpt.pdf — trang 1",
+        "bert.pdf — trang 2",
+        "transformer.pdf — trang 1",
+        "gpt.pdf — trang 2",
+        "Đồ thị tri thức: 15 đường quan hệ"
+      ],
+      "contexts": [
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; GPT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> tiền huấn luyện; GPT --(sử dụng)--> tiền huấn luyện",
+        "Quan hệ trong đồ thị tri thức: Devlin et al. 2018 --(đề xuất)--> BERT",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> tiền huấn luyện",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Masked Language Model",
+        "Quan hệ trong đồ thị tri thức: Radford et al. 2018 --(đề xuất)--> GPT",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> tiền huấn luyện",
+        "Quan hệ trong đồ thị tri thức: Devlin et al. 2018 --(đề xuất)--> BERT; Devlin et al. 2018 --(thuộc về)--> Google AI Language",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention",
+        "Quan hệ trong đồ thị tri thức: Radford et al. 2018 --(đề xuất)--> GPT; Radford et al. 2018 --(thuộc về)--> OpenAI",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention",
+        "BERT là mô hình ngôn ngữ được đề xuất trong bài báo Devlin et al. 2018. BERT sử dụng kiến trúc Transformer và phương pháp tiền huấn luyện với tác vụ Masked Language Model.",
+        "GPT được giới thiệu trong bài báo Radford et al. 2018. GPT cũng dựa trên kiến trúc Transformer và tiền huấn luyện trên kho văn bản lớn.",
+        "Nhóm tác giả của bài báo Devlin et al. 2018 làm việc tại Google AI Language.",
+        "Transformer được đề xuất bởi Vaswani et al. 2017, dựa trên cơ chế self-attention.",
+        "Radford et al. 2018 là công trình của OpenAI."
+      ],
+      "search_type": "Local",
+      "seed_entities": [
+        "BERT",
+        "GPT"
+      ],
+      "graph_paths": [
+        "BERT --(sử dụng)--> Transformer; GPT --(sử dụng)--> Transformer",
+        "BERT --(sử dụng)--> tiền huấn luyện; GPT --(sử dụng)--> tiền huấn luyện",
+        "Devlin et al. 2018 --(đề xuất)--> BERT",
+        "BERT --(sử dụng)--> Transformer",
+        "BERT --(sử dụng)--> tiền huấn luyện",
+        "BERT --(sử dụng)--> Masked Language Model",
+        "Radford et al. 2018 --(đề xuất)--> GPT",
+        "GPT --(sử dụng)--> Transformer",
+        "GPT --(sử dụng)--> tiền huấn luyện",
+        "Devlin et al. 2018 --(đề xuất)--> BERT; Devlin et al. 2018 --(thuộc về)--> Google AI Language",
+        "BERT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "BERT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention",
+        "Radford et al. 2018 --(đề xuất)--> GPT; Radford et al. 2018 --(thuộc về)--> OpenAI",
+        "GPT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "GPT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention"
+      ],
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "bert",
+            "label": "BERT",
+            "type": "METHOD",
+            "seed": true
+          },
+          {
+            "id": "transformer",
+            "label": "Transformer",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "gpt",
+            "label": "GPT",
+            "type": "METHOD",
+            "seed": true
+          },
+          {
+            "id": "tiền huấn luyện",
+            "label": "tiền huấn luyện",
+            "type": "CONCEPT",
+            "seed": false
+          },
+          {
+            "id": "devlin et al. 2018",
+            "label": "Devlin et al. 2018",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "masked language model",
+            "label": "Masked Language Model",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "radford et al. 2018",
+            "label": "Radford et al. 2018",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "google ai language",
+            "label": "Google AI Language",
+            "type": "ORG",
+            "seed": false
+          },
+          {
+            "id": "vaswani et al. 2017",
+            "label": "Vaswani et al. 2017",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "self-attention",
+            "label": "self-attention",
+            "type": "CONCEPT",
+            "seed": false
+          },
+          {
+            "id": "openai",
+            "label": "OpenAI",
+            "type": "ORG",
+            "seed": false
+          }
+        ],
+        "edges": [
+          {
+            "source": "bert",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "gpt",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "bert",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "gpt",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "devlin et al. 2018",
+            "target": "bert",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "bert",
+            "target": "masked language model",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "radford et al. 2018",
+            "target": "gpt",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "devlin et al. 2018",
+            "target": "google ai language",
+            "label": "thuộc_về"
+          },
+          {
+            "source": "vaswani et al. 2017",
+            "target": "transformer",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "transformer",
+            "target": "self-attention",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "radford et al. 2018",
+            "target": "openai",
+            "label": "thuộc_về"
+          }
+        ]
+      },
+      "method": "GraphRAG",
+      "latency": 0.03,
+      "timings": {
+        "analyze": 0.0,
+        "graph": 0.026,
+        "vector": 0.0
+      },
+      "evidence_hit": 1.0
+    },
+    {
+      "question": "GPT do tổ chức nào phát triển?",
+      "type": "multi-hop",
+      "ground_truth": "GPT được giới thiệu trong Radford et al. 2018, công trình của OpenAI.",
+      "answer": "",
+      "sources": [
+        "gpt.pdf — trang 1",
+        "gpt.pdf — trang 2",
+        "bert.pdf — trang 1",
+        "transformer.pdf — trang 1",
+        "Đồ thị tri thức: 8 đường quan hệ"
+      ],
+      "contexts": [
+        "Quan hệ trong đồ thị tri thức: Radford et al. 2018 --(đề xuất)--> GPT; Radford et al. 2018 --(thuộc về)--> OpenAI",
+        "Quan hệ trong đồ thị tri thức: Radford et al. 2018 --(đề xuất)--> GPT",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> tiền huấn luyện",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer; BERT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> tiền huấn luyện; BERT --(sử dụng)--> tiền huấn luyện",
+        "GPT được giới thiệu trong bài báo Radford et al. 2018. GPT cũng dựa trên kiến trúc Transformer và tiền huấn luyện trên kho văn bản lớn.",
+        "Radford et al. 2018 là công trình của OpenAI.",
+        "BERT là mô hình ngôn ngữ được đề xuất trong bài báo Devlin et al. 2018. BERT sử dụng kiến trúc Transformer và phương pháp tiền huấn luyện với tác vụ Masked Language Model.",
+        "Transformer được đề xuất bởi Vaswani et al. 2017, dựa trên cơ chế self-attention."
+      ],
+      "search_type": "Local",
+      "seed_entities": [
+        "GPT"
+      ],
+      "graph_paths": [
+        "Radford et al. 2018 --(đề xuất)--> GPT; Radford et al. 2018 --(thuộc về)--> OpenAI",
+        "Radford et al. 2018 --(đề xuất)--> GPT",
+        "GPT --(sử dụng)--> Transformer",
+        "GPT --(sử dụng)--> tiền huấn luyện",
+        "GPT --(sử dụng)--> Transformer; BERT --(sử dụng)--> Transformer",
+        "GPT --(sử dụng)--> Transformer; Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "GPT --(sử dụng)--> Transformer; Transformer --(sử dụng)--> self-attention",
+        "GPT --(sử dụng)--> tiền huấn luyện; BERT --(sử dụng)--> tiền huấn luyện"
+      ],
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "gpt",
+            "label": "GPT",
+            "type": "METHOD",
+            "seed": true
+          },
+          {
+            "id": "radford et al. 2018",
+            "label": "Radford et al. 2018",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "openai",
+            "label": "OpenAI",
+            "type": "ORG",
+            "seed": false
+          },
+          {
+            "id": "transformer",
+            "label": "Transformer",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "tiền huấn luyện",
+            "label": "tiền huấn luyện",
+            "type": "CONCEPT",
+            "seed": false
+          },
+          {
+            "id": "bert",
+            "label": "BERT",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "vaswani et al. 2017",
+            "label": "Vaswani et al. 2017",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "self-attention",
+            "label": "self-attention",
+            "type": "CONCEPT",
+            "seed": false
+          }
+        ],
+        "edges": [
+          {
+            "source": "radford et al. 2018",
+            "target": "gpt",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "radford et al. 2018",
+            "target": "openai",
+            "label": "thuộc_về"
+          },
+          {
+            "source": "gpt",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "gpt",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "bert",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "vaswani et al. 2017",
+            "target": "transformer",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "transformer",
+            "target": "self-attention",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "bert",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          }
+        ]
+      },
+      "method": "GraphRAG",
+      "latency": 0.02,
+      "timings": {
+        "analyze": 0.0,
+        "graph": 0.019,
+        "vector": 0.0
+      },
+      "evidence_hit": 1.0
+    },
+    {
+      "question": "Transformer dựa trên cơ chế gì?",
+      "type": "single-hop",
+      "ground_truth": "Transformer dựa trên cơ chế self-attention.",
+      "answer": "",
+      "sources": [
+        "bert.pdf — trang 1",
+        "gpt.pdf — trang 1",
+        "transformer.pdf — trang 1",
+        "bert.pdf — trang 2",
+        "gpt.pdf — trang 2",
+        "Đồ thị tri thức: 9 đường quan hệ"
+      ],
+      "contexts": [
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "Quan hệ trong đồ thị tri thức: Transformer --(sử dụng)--> self-attention",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; Devlin et al. 2018 --(đề xuất)--> BERT",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; BERT --(sử dụng)--> tiền huấn luyện",
+        "Quan hệ trong đồ thị tri thức: BERT --(sử dụng)--> Transformer; BERT --(sử dụng)--> Masked Language Model",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer; Radford et al. 2018 --(đề xuất)--> GPT",
+        "Quan hệ trong đồ thị tri thức: GPT --(sử dụng)--> Transformer; GPT --(sử dụng)--> tiền huấn luyện",
+        "BERT là mô hình ngôn ngữ được đề xuất trong bài báo Devlin et al. 2018. BERT sử dụng kiến trúc Transformer và phương pháp tiền huấn luyện với tác vụ Masked Language Model.",
+        "GPT được giới thiệu trong bài báo Radford et al. 2018. GPT cũng dựa trên kiến trúc Transformer và tiền huấn luyện trên kho văn bản lớn.",
+        "Transformer được đề xuất bởi Vaswani et al. 2017, dựa trên cơ chế self-attention.",
+        "Nhóm tác giả của bài báo Devlin et al. 2018 làm việc tại Google AI Language.",
+        "Radford et al. 2018 là công trình của OpenAI."
+      ],
+      "search_type": "Local",
+      "seed_entities": [
+        "Transformer"
+      ],
+      "graph_paths": [
+        "BERT --(sử dụng)--> Transformer",
+        "GPT --(sử dụng)--> Transformer",
+        "Vaswani et al. 2017 --(đề xuất)--> Transformer",
+        "Transformer --(sử dụng)--> self-attention",
+        "BERT --(sử dụng)--> Transformer; Devlin et al. 2018 --(đề xuất)--> BERT",
+        "BERT --(sử dụng)--> Transformer; BERT --(sử dụng)--> tiền huấn luyện",
+        "BERT --(sử dụng)--> Transformer; BERT --(sử dụng)--> Masked Language Model",
+        "GPT --(sử dụng)--> Transformer; Radford et al. 2018 --(đề xuất)--> GPT",
+        "GPT --(sử dụng)--> Transformer; GPT --(sử dụng)--> tiền huấn luyện"
+      ],
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "transformer",
+            "label": "Transformer",
+            "type": "METHOD",
+            "seed": true
+          },
+          {
+            "id": "bert",
+            "label": "BERT",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "gpt",
+            "label": "GPT",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "vaswani et al. 2017",
+            "label": "Vaswani et al. 2017",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "self-attention",
+            "label": "self-attention",
+            "type": "CONCEPT",
+            "seed": false
+          },
+          {
+            "id": "devlin et al. 2018",
+            "label": "Devlin et al. 2018",
+            "type": "PAPER",
+            "seed": false
+          },
+          {
+            "id": "tiền huấn luyện",
+            "label": "tiền huấn luyện",
+            "type": "CONCEPT",
+            "seed": false
+          },
+          {
+            "id": "masked language model",
+            "label": "Masked Language Model",
+            "type": "METHOD",
+            "seed": false
+          },
+          {
+            "id": "radford et al. 2018",
+            "label": "Radford et al. 2018",
+            "type": "PAPER",
+            "seed": false
+          }
+        ],
+        "edges": [
+          {
+            "source": "bert",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "gpt",
+            "target": "transformer",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "vaswani et al. 2017",
+            "target": "transformer",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "transformer",
+            "target": "self-attention",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "devlin et al. 2018",
+            "target": "bert",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "bert",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "bert",
+            "target": "masked language model",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "radford et al. 2018",
+            "target": "gpt",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "gpt",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          }
+        ]
+      },
+      "method": "GraphRAG",
+      "latency": 0.02,
+      "timings": {
+        "analyze": 0.0,
+        "graph": 0.021,
+        "vector": 0.0
+      },
+      "evidence_hit": 1.0
+    },
+    {
+      "question": "Các chủ đề chính trong kho tài liệu là gì?",
+      "type": "global",
+      "ground_truth": "Kho tài liệu xoay quanh các mô hình ngôn ngữ tiền huấn luyện (BERT, GPT) và kiến trúc Transformer.",
+      "answer": "",
+      "sources": [
+        "Cụm tri thức C0: BERT, Devlin et al. 2018, Google AI Language",
+        "Cụm tri thức C1: GPT, Radford et al. 2018, tiền huấn luyện",
+        "Cụm tri thức C2: Transformer, self-attention, Vaswani et al. 2017",
+        "bert.pdf — trang 1",
+        "bert.pdf — trang 2",
+        "gpt.pdf — trang 1",
+        "gpt.pdf — trang 2",
+        "transformer.pdf — trang 1"
+      ],
+      "contexts": [
+        "BERT, Devlin et al. 2018, Google AI Language: Cụm gồm 4 thực thể, nổi bật: BERT, Devlin et al. 2018, Google AI Language, Masked Language Model. Quan hệ chính: BERT sử dụng Masked Language Model; Devlin et al. 2018 đề xuất BERT; Devlin et al. 2018 thuộc về Google AI Language.",
+        "GPT, Radford et al. 2018, tiền huấn luyện: Cụm gồm 4 thực thể, nổi bật: GPT, Radford et al. 2018, tiền huấn luyện, OpenAI. Quan hệ chính: GPT sử dụng tiền huấn luyện; Radford et al. 2018 đề xuất GPT; Radford et al. 2018 thuộc về OpenAI.",
+        "Transformer, self-attention, Vaswani et al. 2017: Cụm gồm 3 thực thể, nổi bật: Transformer, self-attention, Vaswani et al. 2017. Quan hệ chính: Transformer sử dụng self-attention; Vaswani et al. 2017 đề xuất Transformer."
+      ],
+      "search_type": "Global",
+      "seed_entities": [],
+      "graph_paths": [],
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "bert",
+            "label": "BERT",
+            "type": "METHOD",
+            "community": 0
+          },
+          {
+            "id": "devlin et al. 2018",
+            "label": "Devlin et al. 2018",
+            "type": "PAPER",
+            "community": 0
+          },
+          {
+            "id": "google ai language",
+            "label": "Google AI Language",
+            "type": "ORG",
+            "community": 0
+          },
+          {
+            "id": "masked language model",
+            "label": "Masked Language Model",
+            "type": "METHOD",
+            "community": 0
+          },
+          {
+            "id": "gpt",
+            "label": "GPT",
+            "type": "METHOD",
+            "community": 1
+          },
+          {
+            "id": "radford et al. 2018",
+            "label": "Radford et al. 2018",
+            "type": "PAPER",
+            "community": 1
+          },
+          {
+            "id": "tiền huấn luyện",
+            "label": "tiền huấn luyện",
+            "type": "CONCEPT",
+            "community": 1
+          },
+          {
+            "id": "openai",
+            "label": "OpenAI",
+            "type": "ORG",
+            "community": 1
+          },
+          {
+            "id": "transformer",
+            "label": "Transformer",
+            "type": "METHOD",
+            "community": 2
+          },
+          {
+            "id": "self-attention",
+            "label": "self-attention",
+            "type": "CONCEPT",
+            "community": 2
+          },
+          {
+            "id": "vaswani et al. 2017",
+            "label": "Vaswani et al. 2017",
+            "type": "PAPER",
+            "community": 2
+          }
+        ],
+        "edges": [
+          {
+            "source": "bert",
+            "target": "masked language model",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "devlin et al. 2018",
+            "target": "bert",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "devlin et al. 2018",
+            "target": "google ai language",
+            "label": "thuộc_về"
+          },
+          {
+            "source": "gpt",
+            "target": "tiền huấn luyện",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "radford et al. 2018",
+            "target": "gpt",
+            "label": "đề_xuất"
+          },
+          {
+            "source": "radford et al. 2018",
+            "target": "openai",
+            "label": "thuộc_về"
+          },
+          {
+            "source": "transformer",
+            "target": "self-attention",
+            "label": "sử_dụng"
+          },
+          {
+            "source": "vaswani et al. 2017",
+            "target": "transformer",
+            "label": "đề_xuất"
+          }
+        ]
+      },
+      "map_filtered": false,
+      "method": "GraphRAG",
+      "latency": 0.0,
+      "timings": {
+        "analyze": 0.0,
+        "communities": 0.0
+      },
+      "evidence_hit": 1.0
+    }
+  ]
+}

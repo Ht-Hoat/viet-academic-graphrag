@@ -1,0 +1,35 @@
+[
+  {
+    "question": "Tác giả của BERT làm việc ở tổ chức nào?",
+    "ground_truth": "Nhóm tác giả Devlin et al. 2018 của BERT làm việc tại Google AI Language.",
+    "type": "multi-hop",
+    "graph_evidence": ["Devlin et al. 2018", "Google AI Language"],
+    "note": "Cần 2 bước: BERT → Devlin et al. 2018 → Google AI Language"
+  },
+  {
+    "question": "BERT và GPT có điểm gì chung?",
+    "ground_truth": "Cả BERT và GPT đều dựa trên kiến trúc Transformer và đều dùng tiền huấn luyện.",
+    "type": "multi-hop",
+    "graph_evidence": ["Transformer", "tiền huấn luyện"],
+    "note": "Cần đường nối giữa hai thực thể trong câu hỏi"
+  },
+  {
+    "question": "GPT do tổ chức nào phát triển?",
+    "ground_truth": "GPT được giới thiệu trong Radford et al. 2018, công trình của OpenAI.",
+    "type": "multi-hop",
+    "graph_evidence": ["Radford et al. 2018", "OpenAI"]
+  },
+  {
+    "question": "Transformer dựa trên cơ chế gì?",
+    "ground_truth": "Transformer dựa trên cơ chế self-attention.",
+    "type": "single-hop",
+    "graph_evidence": ["self-attention"]
+  },
+  {
+    "question": "Các chủ đề chính trong kho tài liệu là gì?",
+    "ground_truth": "Kho tài liệu xoay quanh các mô hình ngôn ngữ tiền huấn luyện (BERT, GPT) và kiến trúc Transformer.",
+    "type": "global",
+    "graph_evidence": ["Transformer"],
+    "note": "Câu global — cần community summaries"
+  }
+]

@@ -1,4 +1,4 @@
-# Bí mật
+﻿# Bí mật
 .env
 
 # Dữ liệu sinh ra (giữ .gitkeep để còn cấu trúc thư mục)
@@ -18,3 +18,14 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/pdfs/
+*.faiss
+data/graph/graph.json
+data/graph/entity_vectors.npz
+.ipynb_checkpoints/

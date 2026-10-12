@@ -1,0 +1,16 @@
+# Neo4j cho GraphRAG. Chạy: docker compose up -d  → Browser: http://localhost:7474
+services:
+  neo4j:
+    image: neo4j:5.26-community  # Cố định phiên bản (cần >= 5.23 cho cú pháp CALL (x) { ... })
+    container_name: graphrag-neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: ${NEO4J_USER:-neo4j}/${NEO4J_PASSWORD:-graphrag123}
+      NEO4J_server_memory_heap_max__size: 1G
+    volumes:
+      - neo4j_data:/data  # Giữ dữ liệu khi xoá/tạo lại container
+
+volumes:
+  neo4j_data:
