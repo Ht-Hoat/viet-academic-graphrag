@@ -1,0 +1,11 @@
+GraphRAG và đồ thị tri thức
+
+GraphRAG là hướng cải tiến RAG do nhóm nghiên cứu của Microsoft đề xuất trong bài báo "From Local to Global: A Graph RAG Approach to Query-Focused Summarization" của Edge và cộng sự năm 2024. Ý tưởng cốt lõi là thay vì chỉ tìm kiếm các đoạn văn rời rạc theo độ tương đồng, GraphRAG dựng một đồ thị tri thức (Knowledge Graph) từ tài liệu, rồi trả lời câu hỏi bằng cách đi theo các quan hệ trong đồ thị.
+
+Đồ thị tri thức là một đồ thị G gồm tập đỉnh V và tập cạnh E. Mỗi đỉnh là một thực thể (entity) như tên người, tổ chức, phương pháp, khái niệm. Mỗi cạnh là một quan hệ có nhãn giữa hai thực thể. Mỗi quan hệ được biểu diễn dưới dạng một bộ ba (triple) gồm chủ thể, quan hệ và đối tượng, ví dụ bộ ba (BERT, được đề xuất bởi, Devlin và cộng sự).
+
+Quy trình dựng đồ thị chạy ngoại tuyến (offline). Với mỗi chunk, một mô hình ngôn ngữ được yêu cầu trích xuất các thực thể và quan hệ dưới dạng JSON. Các thực thể trùng nhau được gộp lại, các quan hệ được thêm vào đồ thị. Sau đó thuật toán Leiden phát hiện cộng đồng (community detection) chia đồ thị thành các cụm thực thể liên kết chặt chẽ, bằng cách tối đa hóa chỉ số modularity. Mỗi cộng đồng được mô hình ngôn ngữ tóm tắt thành một đoạn văn.
+
+Khi trả lời câu hỏi, GraphRAG phân loại câu hỏi thành hai loại. Local Search dành cho câu hỏi cụ thể: hệ thống tìm thực thể trong câu hỏi, đi theo các cạnh của đồ thị vài bước (multi-hop traversal) để thu thập thông tin phân tán ở nhiều tài liệu, kết hợp với truy hồi vector, rồi sinh câu trả lời. Global Search dành cho câu hỏi tổng quát: hệ thống duyệt qua toàn bộ bản tóm tắt cộng đồng theo cơ chế map-reduce, mỗi cộng đồng cho một ý trả lời một phần, rồi tổng hợp lại.
+
+Điểm mạnh của GraphRAG là trả lời tốt câu hỏi đa bước (multi-hop) và câu hỏi tổng quát, đồng thời giải thích được đường suy luận qua các quan hệ. Ví dụ câu hỏi "Tác giả đề xuất BERT thuộc tổ chức nào?" đòi hỏi ghép hai thông tin: BERT do Devlin và cộng sự đề xuất, và Devlin thuộc Google. Naive RAG dễ thất bại vì đoạn văn chứa "BERT" có thể không nhắc đến tổ chức, còn GraphRAG đi theo cạnh nối hai thực thể nên thu được câu trả lời đầy đủ. Đổi lại, GraphRAG chậm hơn và phức tạp hơn vì phải gọi mô hình ngôn ngữ nhiều lần để dựng đồ thị.
