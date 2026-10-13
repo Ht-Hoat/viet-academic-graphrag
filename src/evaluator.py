@@ -63,13 +63,15 @@ def score_with_ragas(records: list[dict]) -> list[dict]:
     """
     from datasets import Dataset
     from ragas import evaluate
+    from ragas.embeddings import LangchainEmbeddingsWrapper
+    from ragas.llms import LangchainLLMWrapper
     from ragas.metrics import (answer_relevancy, context_precision,
                                context_recall, faithfulness)
-
+    from src.embedder import get_embeddings
+    from src.llm import get_llm
     ok = [r for r in records if "error" not in r]
     if not ok:
         return [{m: math.nan for m in config.RAGAS_METRICS} for _ in records]
-
     ds = Dataset.from_list([{
         "question": r["question"],
         "answer": r["answer"],
@@ -77,7 +79,9 @@ def score_with_ragas(records: list[dict]) -> list[dict]:
         "ground_truth": r["ground_truth"],
     } for r in ok])
     metrics = [faithfulness, answer_relevancy, context_precision, context_recall]
-    df = evaluate(ds, metrics=metrics).to_pandas()
+    llm = LangchainLLMWrapper(get_llm())
+    embeddings = LangchainEmbeddingsWrapper(get_embeddings())
+    df = evaluate(ds, metrics=metrics, llm=llm, embeddings=embeddings).to_pandas()
 
     scored, it = [], iter(range(len(ok)))
     for r in records:
