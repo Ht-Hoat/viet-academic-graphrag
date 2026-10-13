@@ -48,5 +48,30 @@
     "question": "Xu hướng nghiên cứu chính trong lĩnh vực RAG hiện nay là gì?",
     "ground_truth": "Các xu hướng chính gồm GraphRAG, Agentic RAG, truy hồi lai (BM25 + vector), và các phương pháp đánh giá tự động như RAGAS.",
     "type": "global"
-  }
+  },
+  {
+  "question": "Nhìn chung, các chủ đề chính trong toàn bộ tài liệu là gì?",
+  "ground_truth": "Kho tài liệu xoay quanh mô hình ngôn ngữ tiền huấn luyện (BERT, GPT), kiến trúc Transformer, kỹ thuật RAG và embedding, FAISS cùng re-ranking, GraphRAG (đồ thị tri thức, cộng đồng Leiden, local/global search), và khung đánh giá RAGAS.",
+  "type": "global"
+},
+{
+  "question": "Tổng quan quy trình Naive RAG gồm những bước nào?",
+  "ground_truth": "Naive RAG gồm năm bước: chunking tài liệu, embedding từng chunk, indexing vào chỉ mục tìm kiếm, retrieval chunk gần câu hỏi, rồi generation bằng LLM với ngữ cảnh đã truy hồi.",
+  "type": "global"
+},
+{
+  "question": "Xu hướng nghiên cứu chính trong lĩnh vực RAG hiện nay gồm những hướng nào?",
+  "ground_truth": "Các xu hướng chính gồm GraphRAG, Agentic RAG, truy hồi lai kết hợp BM25 với vector, và các khung đánh giá tự động như RAGAS.",
+  "type": "global"
+},
+{
+  "question": "Nhìn chung GraphRAG khác Naive RAG ở điểm nào khi trả lời câu hỏi tổng quát và đa bước?",
+  "ground_truth": "Naive RAG chỉ tìm chunk theo độ tương đồng ngữ nghĩa nên dễ bỏ sót thông tin phân tán; GraphRAG dựng đồ thị tri thức, đi theo quan hệ (local) hoặc tóm tắt cộng đồng kiểu map-reduce (global), nên tốt hơn với câu multi-hop và tổng quát, đổi lại chậm và phức tạp hơn.",
+  "type": "global"
+},
+{
+  "question": "Tổng quan RAGAS đánh giá hệ thống RAG trên những chỉ số nào?",
+  "ground_truth": "RAGAS chấm bốn chỉ số: Faithfulness (độ trung thực với ngữ cảnh), Answer Relevancy (câu trả lời có đúng câu hỏi), Context Precision (đoạn truy hồi liên quan được xếp cao), và Context Recall (ngữ cảnh có đủ thông tin so với ground truth).",
+  "type": "global"
+}
 ]

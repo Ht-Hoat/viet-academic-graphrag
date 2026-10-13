@@ -260,8 +260,8 @@ Và trong real pipeline output:
 ```
 
 **Checklist:**
-- [ ] Mock output ghi `source: "mock"`
-- [ ] Real output ghi `source: "real"`
+- [x] Mock output ghi `source: "mock"`
+- [x] Real output ghi `source: "real"`
 
 ---
 
