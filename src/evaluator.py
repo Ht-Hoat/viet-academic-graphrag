@@ -121,9 +121,12 @@ def aggregate(records: list[dict], per_question: list[dict]) -> dict:
 
 # ===== Chạy đầy đủ cho một pipeline =====
 def evaluate_pipeline(pipeline, questions: list[dict], method: str = None,
-                      scorer: Scorer = score_with_ragas, save: bool = True) -> dict:
+                      scorer: Scorer = score_with_ragas, save: bool = True,
+                      source: str | None = None) -> dict:
     """Chạy end-to-end cho một pipeline: thu câu trả lời → chấm RAGAS → gộp → (lưu JSON)."""
     method = method or getattr(pipeline, "name", "Unknown")
+    if source is None:
+        source = "mock" if getattr(pipeline, "is_mock", False) else "real"
     records = collect_records(pipeline, questions)
     per_question = scorer(records)
     agg = aggregate(records, per_question)
@@ -139,7 +142,7 @@ def evaluate_pipeline(pipeline, questions: list[dict], method: str = None,
     payload = {
         "method": method,
         "num_questions": len(records),
-        "source": "real",
+        "source": source,
         "overall": agg["overall"],
         "by_type": agg["by_type"],
         "records": detail,

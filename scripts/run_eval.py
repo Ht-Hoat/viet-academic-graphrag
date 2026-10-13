@@ -44,9 +44,13 @@ def main(argv=None):
     scorer = _mock_scorer if args.mock else score_with_ragas
 
     for name, pipe in pipes.items():
-        tag = "MOCK" if (args.mock or pipe.is_mock) else "REAL"
+        is_mock = args.mock or pipe.is_mock
+        tag = "MOCK" if is_mock else "REAL"
         print(f"\n=== Đánh giá {name} [{tag}] ===")
-        payload = evaluate_pipeline(pipe, questions, method=name, scorer=scorer, save=True)
+        payload = evaluate_pipeline(
+            pipe, questions, method=name, scorer=scorer, save=True,
+            source="mock" if is_mock else "real",
+        )
         ov = payload["overall"]
         print("  " + " · ".join(f"{m}={ov.get(m)}" for m in config.RAGAS_METRICS) + f" · latency={ov.get('latency')}s")
 
