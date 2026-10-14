@@ -125,10 +125,10 @@ def result_filename(method: str) -> str:
 ```
 
 **Checklist:**
-- [ ] Tất cả constants từ 4 nhánh đều có mặt
-- [ ] `python -c "from src import config; print(config.CHUNK_OVERLAP)"` → 50
-- [ ] Không hardcode API key, password
-- [ ] dotenv có try/except
+- [x] Tất cả constants từ 4 nhánh đều có mặt
+- [x] `python -c "from src import config; print(config.CHUNK_OVERLAP)"` → 50
+- [x] Không hardcode API key, password
+- [x] dotenv có try/except
 - [ ] Hùng review phần Graph constants
 - [ ] Tuấn Anh review phần Evaluation constants
 
@@ -139,8 +139,8 @@ def result_filename(method: str) -> str:
 **Đã nằm trong Task 1.1** — config mới ghi `CHUNK_OVERLAP=50`.
 
 Thêm:
-- [ ] Xóa file chunks cache cũ (nếu có) trong `data/processed/` — chunks cũ dùng overlap=80
-- [ ] Re-run `chunk_documents()` với overlap=50 để tạo chunks mới
+- [x] Xóa file chunks cache cũ (nếu có) trong `data/processed/` — chunks cũ dùng overlap=80
+- [x] Re-run `chunk_documents()` với overlap=50 để tạo chunks mới (verify: 5 doc mẫu → 28 chunks)
 
 ---
 
@@ -164,9 +164,9 @@ print(result)  # {"answer": "...", "sources": [...], "method": "Naive RAG"}
 ```
 
 **Checklist:**
-- [ ] Import từ `src.llm` (không còn `src.llm_utils`)
-- [ ] Import từ `src.config` (config gộp)
-- [ ] `NaiveRAG.query()` trả kết quả đúng format
+- [x] Import từ `src.llm` (không còn `src.llm_utils`)
+- [x] Import từ `src.config` (config gộp)
+- [x] `NaiveRAG.query()` trả kết quả đúng format (`{"answer","sources","contexts","latency","method"}`)
 
 ---
 
@@ -200,9 +200,9 @@ def get_shared_vectorstore():
 ```
 
 **Checklist:**
-- [ ] `load_and_chunk()` callable từ cả naive_rag, graph_rag, rerank_rag
-- [ ] `get_shared_vectorstore()` trả LangChain FAISS index
-- [ ] Long và Hùng gọi được các hàm này
+- [x] `load_and_chunk()` callable từ cả naive_rag, graph_rag, rerank_rag (API ổn định trong `src/naive_rag.py`)
+- [x] `get_global_vectorstore()` trả LangChain FAISS index (cache lazy, auto-build khi chưa có)
+- [ ] Long và Hùng gọi được các hàm này (chờ confirm từ Long & Hùng sau khi merge)
 
 ---
 
